@@ -1,22 +1,22 @@
 package org.example;
 
-public class Two implements SomeStructure {
-    Node head;
+public class Two<T> implements SomeStructure<T> {
+    Node<T> head;
     private int size;
     Two() {};
-    Two(int[] array) {
-        head = new Node(array[0]);
-        Node temp, tempPrev = head;
+    Two(T[] array) {
+        head = new Node<T>(array[0]);
+        Node<T> temp, tempPrev = head;
         for (int i = 1; i < array.length; ++i) {
-            temp = new Node(array[i]);
+            temp = new Node<T>(array[i]);
             temp.previous = tempPrev;
             tempPrev.next = temp;
             tempPrev = temp;
         }
         size = array.length;
     }
-    public int findFirst(Integer e) {
-        Node current = head;
+    public int findFirst(T e) {
+        Node<T> current = head;
         int index = 0;
         while (!current.value.equals(e)) {
             current = current.next;
@@ -28,8 +28,8 @@ public class Two implements SomeStructure {
         }
         return index;
     }
-    public int findLast(Integer e) {
-        Node current = head;
+    public int findLast(T e) {
+        Node<T> current = head;
         int index = 0;
         int IND = -1;
         while (current.next != null) {
@@ -44,7 +44,7 @@ public class Two implements SomeStructure {
     }
 
     public void deleteAllSimilar() {
-        Node current = head;
+        Node<T> current = head;
         boolean flag = false;
         while (current.next != null) {
             if (findFirst(current.value) != findLast(current.value)) {
@@ -58,22 +58,23 @@ public class Two implements SomeStructure {
         }
 
     }
-    public void output() {
-        Node current = head;
+    public String toString() {
+        Node<T> current = head;
+        String s = "";
         while (current != null) {
-            System.out.print(current.value + " ");
+            s = s + current.value + " ";
             current = current.next;
         }
-        System.out.println();
+        return s;
     }
-    public void add(Integer e) throws EmptyElementException {
+    public void add(T e) throws EmptyElementException {
         if (e == null) throw new EmptyElementException("Empty elem !");
-        Node e1 = new Node(e);
+        Node<T> e1 = new Node<>(e);
         if (head == null) {
             head = e1;
         }
         else {
-            Node current = head;
+            Node<T> current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -84,7 +85,7 @@ public class Two implements SomeStructure {
     }
     public void delete(int index) throws IndexOutOfBoundsException {
         if (index + 1 > size) throw new IndexOutOfBoundsException();
-        Node e = head;
+        Node<T> e = head;
         int count = 0;
         while (count != index) {
             e = e.next;
@@ -107,21 +108,20 @@ public class Two implements SomeStructure {
         size--;
     }
 
-    public Integer pop() {
-        Node e = head;
+    public T pop() {
+        Node<T> e = head;
         while (e.next != null) {
             e = e.next;
         }
-        Integer re = e.value;
+        T re = e.value;
         e.previous.next = null;
-        e = null;
         size--;
         return re;
     }
 
-    public Integer get(int index) throws IndexOutOfBoundsException {
+    public T get(int index) throws IndexOutOfBoundsException {
         if (index + 1 > size) throw new IndexOutOfBoundsException("no more bounds");
-        Node e = head;
+        Node<T> e = head;
         int count = 0;
         while (count != index) {
             e = e.next;

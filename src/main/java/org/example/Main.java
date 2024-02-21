@@ -44,9 +44,27 @@ public class Main {
 //        Two arr = new Two(ar);
 //        arr.output();
         int[] ar = new int[] {9, 3, 4, 3, 4, 0, 4, -2};
-        Two a = new Two(ar);
-        a.output();
-        a.deleteAllSimilar();
-        a.output();
+        Two<Integer> a = new Two<>();
+        try {
+            a.add(9);
+            a.add(8);
+            a.add(0);
+        }
+        catch (EmptyElementException b) {
+            System.out.println(b.getMessage());
+        }
+        System.out.println(a);
+
+        One<String> q = new One<>(10);
+        try {
+            q.add("first");
+            q.add("second");
+            q.add("third");
+        }
+        catch (EmptyElementException b) {
+            System.out.println(b.getMessage());
+        }
+        System.out.println(q);
+
     }
 }

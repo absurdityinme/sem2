@@ -1,17 +1,17 @@
 package org.example;
 
-public class One implements SomeStructure {
-    private Integer[] array;
+public class One<T> implements SomeStructure<T> {
+    private Object[] array;
     private int size;
     private int capacity;
     One(int capacity) {
         this.capacity = capacity;
-        array = new Integer[capacity];
+        array = new Object[capacity];
     }
-    public void add(Integer e) throws EmptyElementException {
+    public void add(T e) throws EmptyElementException {
         if (e == null) throw new EmptyElementException("Empty element !");
         if (size == capacity) {
-            Integer[] arrayNew = new Integer[capacity*2];
+            Object[] arrayNew = new Object[capacity*2];
             capacity *= 2;
             System.arraycopy(array, 0, arrayNew, 0, array.length);
             array = arrayNew;
@@ -24,17 +24,23 @@ public class One implements SomeStructure {
             array[i] = array[i+1];
         }
         array[size + 1] = null;
-
     }
-    public Integer pop() {
-        Integer re = array[--size];
+    public T pop() {
+        Object re = array[--size];
         array[size] = null;
-        return re;
+        return (T) re;
     }
 
-    public Integer get(int index) throws IndexOutOfBoundsException {
+    public T get(int index) throws IndexOutOfBoundsException {
         if (index > size) throw new IndexOutOfBoundsException();
-        return array[index];
+        return (T) array[index];
     }
     public int size() { return size; }
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < size; ++i) {
+            s = s + array[i] + " ";
+        }
+        return s;
+    }
 }

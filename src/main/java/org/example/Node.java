@@ -1,13 +1,12 @@
 package org.example;
 
-public class Node {
-    Integer value;
-    Node next;
-    Node previous;
+public class Node<T> {
+    public T value;
+    public Node<T> next;
+    public Node<T> previous;
 
-    Node(Integer value) {
+    public Node(T value) {
         this.value = value;
     }
-    Node() {};
 
 }
