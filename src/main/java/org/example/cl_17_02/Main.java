@@ -28,6 +28,19 @@ public class Main {
         catch (EmptyElementException a) {
             System.out.println(a.getMessage());
         }
+        System.out.println(set);
         System.out.println(set.contains("jojo"));
+        try {
+            set.add("jojo");
+            set.add("jojo");
+            set.add("fourth");
+        }
+        catch (EmptyElementException a) {
+            System.out.println(a.getMessage());
+        }
+        System.out.println(set);
+        System.out.println(set.contains("jojo"));
+        set.delete(0);
+        System.out.println(set);
     }
 }
