@@ -1,4 +1,4 @@
-package org.example;
+package org.example.smth;
 
 public class Node<T> {
     public T value;

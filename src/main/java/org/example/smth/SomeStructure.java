@@ -1,7 +1,9 @@
-package org.example;
+package org.example.smth;
 
 // однотипные элементы Object
 // по позиции ( 0 .. )
+
+import org.example.smth.EmptyElementException;
 
 public interface SomeStructure <T> {
     void add(T e) throws EmptyElementException;

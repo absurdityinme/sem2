@@ -1,6 +1,6 @@
 package org.example.cl_17_02;
 
-import org.example.EmptyElementException;
+import org.example.smth.EmptyElementException;
 
 public class Main {
     public static void main(String[] args) {

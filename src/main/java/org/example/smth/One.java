@@ -1,4 +1,4 @@
-package org.example;
+package org.example.smth;
 
 public class One<T> implements SomeStructure<T> {
     private Object[] array;

@@ -1,7 +1,7 @@
 package org.example.cl_17_02;
 
-import org.example.EmptyElementException;
-import org.example.Node;
+import org.example.smth.EmptyElementException;
+import org.example.smth.Node;
 
 public class Set<T> {
     Node<T> head;

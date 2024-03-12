@@ -1,4 +1,8 @@
-package org.example;
+package org.example.smth;
+
+import org.example.smth.EmptyElementException;
+import org.example.smth.Node;
+import org.example.smth.SomeStructure;
 
 public class Two<T> implements SomeStructure<T> {
     Node<T> head;

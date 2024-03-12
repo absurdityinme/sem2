@@ -1,4 +1,4 @@
-package org.example;
+package org.example.smth;
 
 public class EmptyElementException extends Exception {
     public EmptyElementException() {
