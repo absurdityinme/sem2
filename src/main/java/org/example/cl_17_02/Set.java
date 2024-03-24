@@ -3,7 +3,11 @@ package org.example.cl_17_02;
 import org.example.smth.EmptyElementException;
 import org.example.smth.Node;
 
-public class Set<T> {
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class Set<T> implements Iterable<T> {
     Node<T> head;
     int size;
     public void add(T e) throws EmptyElementException {
@@ -63,5 +67,43 @@ public class Set<T> {
             current = current.next;
         }
         return false;
+    }
+    public T get(int index) {
+        Node<T> current = head;
+        int ind = 0;
+        while (current != null) {
+            if (ind == index) return current.value;
+            ind++;
+            current = current.next;
+        }
+        return null;
+    }
+
+    public Iterator<T> iterator() {
+        return new MyIterator();
+    }
+
+    public class MyIterator implements Iterator<T> {
+        int place;
+        int sizeBefore;
+        boolean removeWas;
+        boolean removeWasOnce; // if remove was ever called
+        MyIterator() { sizeBefore = size; }
+        public boolean hasNext() {
+            return place < size;
+        }
+        public T next() {
+            if (place == size) throw new NoSuchElementException();
+            if ((sizeBefore > size && !removeWasOnce) || (sizeBefore < size)) throw new ConcurrentModificationException();
+            removeWas = false;
+            return get(place++);
+        }
+        public void remove() {
+            if (place == 0 || removeWas) throw new IllegalStateException();
+            removeWas = true;
+            if (!removeWasOnce) removeWasOnce = true;
+            delete(--place);
+        }
+
     }
 }
