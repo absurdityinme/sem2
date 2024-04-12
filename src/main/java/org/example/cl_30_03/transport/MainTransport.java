@@ -35,7 +35,7 @@ public class MainTransport {
                 dataBase.getData().getVehicles().stream()
                         .filter(vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getName().equals(number))
                         .count();
-        System.out.println(count);
+        System.out.println("Количество транспорта по маршруту " + number + ": " + count);
     }
 
     // создать map, показывающий транспортное средство и количество сообщений о своих координатах
@@ -76,9 +76,6 @@ public class MainTransport {
                 .filter(vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getType().equals(transportType))
                 .forEach(vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getId());
     }
-
-
-    public static void task7(TransportDataBase dataBase) {
 
     }
 }
