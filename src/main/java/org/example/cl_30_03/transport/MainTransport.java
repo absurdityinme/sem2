@@ -76,6 +76,4 @@ public class MainTransport {
                 .filter(vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getType().equals(transportType))
                 .forEach(vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getId());
     }
-
-    }
 }
