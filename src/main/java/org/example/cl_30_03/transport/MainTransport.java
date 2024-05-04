@@ -24,9 +24,11 @@ public class MainTransport {
 
     // определить какой транспорт в базе данных
     public static void task1(TransportDataBase dataBase) {
-        Set<String> transportInDataBase = dataBase.getData().getVehicles().stream()
-                .map(vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getType()).collect(Collectors.toSet());
-        transportInDataBase.forEach(System.out::println);
+       // Set<String> transportInDataBase =
+                dataBase.getData().getVehicles().stream()
+                .map(vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getType()).collect(Collectors.toSet())
+                .forEach(System.out::println);
+        //transportInDataBase.forEach(System.out::println);
     }
 
     // определить количество транспорта определенного маршрута на линии
@@ -40,14 +42,14 @@ public class MainTransport {
 
     // создать map, показывающий транспортное средство и количество сообщений о своих координатах
     public static void task3(TransportDataBase dataBase) {
-        Map<String, Integer> map = dataBase.getData().getVehicles().stream()
+       // Map<String, Integer> map =
+                dataBase.getData().getVehicles().stream()
                 .collect(Collectors.toMap(
                                 vehicle -> vehicle.getProperties().getVehicleMetaData().getTransport().getId(),
                                 vehicle -> vehicle.getFeatures().stream().mapToInt(
                                         feature -> feature.getGeometry().getCoordinates().length).sum()
                         )
-                );
-        map.forEach((k, v) -> System.out.println(k + ": " + v));
+                ).forEach((k, v) -> System.out.println(k + ": " + v));
     }
 
     // вывести номер, тип, id транспорта, отсортировав в порядке возрастания номера маршрута

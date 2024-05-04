@@ -11,26 +11,21 @@ import java.io.IOException;
 (Использовать FileInputStream и FileOutputStream)
  */
 public class Task1 {
-    public static void main(String[] args) {
-        try {
-            FileInputStream fin1 = new FileInputStream(args[0]);
-            FileInputStream fin2 = new FileInputStream(args[1]);
-            FileOutputStream fos = new FileOutputStream(args[2]);
-            int iByte = 0;
-            while (iByte != -1) {
-                if ((iByte = fin1.read()) != -1) {
-                    fos.write(iByte);
-                }
-                else if ((iByte = fin2.read()) != -1) {
-                    fos.write(iByte);
-                }
+    public static void main(String[] args) throws IOException{
+        FileInputStream fin1 = new FileInputStream(args[0]);
+        FileInputStream fin2 = new FileInputStream(args[1]);
+        FileOutputStream fos = new FileOutputStream(args[2]);
+        int iByte = 0;
+        while (iByte != -1) {
+            if ((iByte = fin1.read()) != -1) {
+                fos.write(iByte);
             }
-            fin1.close();
-            fin2.close();
-            fos.close();
+            else if ((iByte = fin2.read()) != -1) {
+                fos.write(iByte);
+            }
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        fin1.close();
+        fin2.close();
+        fos.close();
     }
 }
