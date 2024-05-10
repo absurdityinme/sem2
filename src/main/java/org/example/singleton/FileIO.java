@@ -3,7 +3,7 @@ package org.example.singleton;
 import java.io.*;
 
 public class FileIO {
-    private static FileIO instance;
+    private volatile static FileIO instance;
     private static File file = new File("singletonTask.txt");
 
     private FileIO() {}
