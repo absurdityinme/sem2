@@ -6,6 +6,6 @@ import org.junit.Test;
 public class FileIOTest {
     @Test
     public void testIsClassSIngleton() {
-        Assert.assertTrue(FileIO.getInstance().equals(FileIO.getInstance() ));
+        Assert.assertTrue(FileIO.getInstance() == FileIO.getInstance());
     }
 }
